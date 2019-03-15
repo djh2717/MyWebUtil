@@ -6,7 +6,7 @@ package my.code.repository.utils;
  * @author djh on  2019/3/8 09:02
  * @E-Mail 1544579459@qq.com
  */
-public class HttpContentType {
+public class ContentTypeUtil {
     /**
      * text/plain          ：纯文本格式 .txt
      * text/xml            ： XML格式 .xml
