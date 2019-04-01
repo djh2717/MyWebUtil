@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- status : 指定log4j本身的打印日志的级别.ALL< Trace < DEBUG < INFO < WARN < ERROR
+    < FATAL < OFF。 monitorInterval : 用于指定log4j自动重新配置的监测间隔时间，单位是s,最小是5s. -->
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- ========================== 配置属性 ========================== -->
+    <Properties>
+
+        <!-- 配置日志文件输出目录 ${sys:user.home} -->
+        <Property name="LOG_HOME">D:/logs</Property>
+        <property name="ERROR_LOG_FILE_NAME">D:/logs</property>
+        <property name="WARN_LOG_FILE_NAME">D:/logs</property>
+
+        <!-- 输出日志的格式 -->
+        <!--
+            %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间
+            %p : 日志输出格式
+            %c : logger的名称
+            %m : 日志内容，即 logger.info("message")
+            %n : 换行符
+            %C : Java类名
+            %L : 日志输出所在行数
+            %M : 日志输出所在方法名
+            hostName : 本地机器名
+            hostAddress : 本地ip地址 -->
+        <property name="PATTERN">
+            <!--初始配置-->
+            <!--%d{yyyy-MM-dd HH:mm:ss.SSS} [%t-%L] %-5level %logger{36} - %msg%n-->
+
+            <!--自定义配置-->
+            <!--%-5level %d{HH:mm:ss} [%C-%M-%L] &ndash;&gt; %msg%n-->
+
+            <!--代码链接初始配置-->
+            <!--%highlight(%-5level) %d{yyyy-MM-dd'T'HH:mm:ss.SSS} %yellow([%thread]) %blue(%logger{36}\(%class{0}.java:%line\)) %msg%n-->
+
+            <!--代码链接配置-->
+            %-5level %d{HH:mm:ss} %logger{0}.\(%class{0}.java:%line\):%M [%thread] :%n %msg %n%n
+        </property>
+
+    </Properties>
+    <!-- ========================== 配置属性 ========================== -->
+
+
+    <!-- ========================== 输出源 ========================== -->
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch) -->
+            <!--<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />-->
+
+            <!--输出到控制台的格式-->
+            <PatternLayout pattern="${PATTERN}" />
+        </Console>
+
+        <!--append属性指是否追加, 默认true-->
+        <File name="MyDefaultFileLogs" fileName="logs/MyDefaultLogs.log" append="false">
+            <PatternLayout pattern="${PATTERN}" />
+        </File>
+
+        <!--&lt;!&ndash; 这个会打印出所有的info及以下级别的信息，每次大小超过size，-->
+        <!--则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 &ndash;&gt;-->
+        <!--<RollingFile name="RollingFileInfo" fileName="${LOG_HOME}/info.log"-->
+        <!--filePattern="${LOG_HOME}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">-->
+        <!--&lt;!&ndash;控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） &ndash;&gt;-->
+        <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />-->
+        <!--<PatternLayout-->
+        <!--pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />-->
+        <!--<Policies>-->
+        <!--&lt;!&ndash;&lt;!&ndash; 基于时间的滚动策略，interval属性用来指定多久滚动一次，默认是1 hour。 modulate=true用来调整时间：比如现在是早上3am，interval是4，那么第一次滚动是在4am，接着是8am，12am...而不是7am. &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 关键点在于 filePattern后的日期格式，以及TimeBasedTriggeringPolicy的interval，&ndash;&gt;-->
+        <!--&lt;!&ndash;日期格式精确到哪一位，interval也精确到哪一个单位 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; log4j2的按天分日志文件 : info-%d{yyyy-MM-dd}-%i.log&ndash;&gt;&ndash;&gt;-->
+        <!--<TimeBasedTriggeringPolicy interval="1" modulate="true" />-->
+        <!--&lt;!&ndash; SizeBasedTriggeringPolicy:Policies子节点， 基于指定文件大小的滚动策略，size属性用来定义每个日志文件的大小. &ndash;&gt;-->
+        <!--<SizeBasedTriggeringPolicy size="2 kB" />-->
+        <!--</Policies>-->
+        <!--</RollingFile>-->
+
+        <!--<RollingFile name="RollingFileWarn" fileName="${WARN_LOG_FILE_NAME}/warn.log"-->
+        <!--filePattern="${WARN_LOG_FILE_NAME}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">-->
+
+        <!--<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />-->
+        <!--<PatternLayout-->
+        <!--pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />-->
+
+        <!--<Policies>-->
+        <!--<TimeBasedTriggeringPolicy />-->
+        <!--<SizeBasedTriggeringPolicy size="2 kB" />-->
+        <!--</Policies>-->
+
+        <!--&lt;!&ndash; DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 &ndash;&gt;-->
+        <!--<DefaultRolloverStrategy max="20" />-->
+        <!--</RollingFile>-->
+
+        <!--<RollingFile name="RollingFileError" fileName="${ERROR_LOG_FILE_NAME}/error.log"-->
+        <!--filePattern="${ERROR_LOG_FILE_NAME}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd-HH-mm}-%i.log">-->
+        <!--<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />-->
+        <!--<PatternLayout-->
+        <!--pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />-->
+        <!--<Policies>-->
+        <!--&lt;!&ndash; log4j2的按分钟 分日志文件 : warn-%d{yyyy-MM-dd-HH-mm}-%i.log&ndash;&gt;-->
+        <!--<TimeBasedTriggeringPolicy interval="1" modulate="true" />-->
+        <!--&lt;!&ndash; <SizeBasedTriggeringPolicy size="10 MB" /> &ndash;&gt;-->
+        <!--</Policies>-->
+        <!--</RollingFile>-->
+
+    </Appenders>
+    <!-- ========================== 输出源 ========================== -->
+
+
+    <!-- ========================== 日志者 ========================== -->
+    <Loggers>
+
+        <!--控制对应包下的文件的日志输出级别-->
+        <logger name="org.jboss" level="error" />
+
+        <!--无效-->
+        <!--<logger name="org.mybatis" level="error">-->
+        <!--<appender-ref ref="Console" />-->
+        <!--</logger>-->
+
+        <logger name="org.hibernate" level="error" />
+        <logger name="org.apache.http" level="error" />
+        <logger name="org.springframework" level="error" />
+        <logger name="org.springframework.web" level="error" />
+        <logger name="org.springframework.core" level="error" />
+        <logger name="org.springframework.beans" level="error" />
+        <logger name="org.springframework.context" level="error" />
+
+        <!--自定义日志输出者-->
+        <logger name="MyConsoleLogger" additivity="false" level="debug">
+            <appender-ref ref="Console" />
+        </logger>
+        <logger name="MyFileLogger" additivity="false" level="debug">
+            <appender-ref ref="MyDefaultFileLogs" />
+        </logger>
+
+        <!-- 配置日志的根节点 -->
+        <root level="all">
+            <appender-ref ref="Console" />
+            <!--<appender-ref ref="RollingFileInfo" />-->
+            <!--<appender-ref ref="RollingFileWarn" />-->
+            <!--<appender-ref ref="RollingFileError" />-->
+        </root>
+    </Loggers>
+    <!-- ========================== 日志者 ========================== -->
+
+</Configuration>

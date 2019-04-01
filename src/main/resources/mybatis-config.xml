@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <!--使用 LOG4J 作为日志输出实现-->
+        <setting name="logImpl" value="LOG4J2" />
+        <!--自动将数据库中 下划线 命名映射到 java 对象的驼峰命名属性中-->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <typeAliases>
+        <package name="mybatis.model" />
+    </typeAliases>
+
+    <plugins>
+        <!--PageHelper 插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--<property name="helperDialect" value="mysql" />-->
+        </plugin>
+    </plugins>
+
+    <environments default="development">
+        <!--环境变量-->
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC" />
+
+            <!--数据源-->
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
+                <property name="username" value="root" />
+                <property name="password" value="djh" />
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--数据库厂商标识-->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql" />
+    </databaseIdProvider>
+
+
+    <!--映射器-->
+    <mappers>
+        <!--<mybatis.mapper resource="mybatis.mapper/CountryMapper.xml" />-->
+        <!--映射包名,从而避免每次增加Mapper.xml文件时都需要在此添加 Mapper-->
+        <!--<package name="javamapper" />-->
+        <!--<package name="mybatis.mapper" />-->
+    </mappers>
+
+
+</configuration>

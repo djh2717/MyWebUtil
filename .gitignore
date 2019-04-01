@@ -8,9 +8,21 @@
 out
 target
 pom.xml
+logs
 
 
 # Custome ignore.
-src/*
+src/main/*
+!src/main/java
+!src/main/resources
+
+
+src/main/java/*
 !src/main/java/my
-!src/resources
+
+
+src/main/resources/*
+!src/main/resources/mybatis-config.xml
+!src/main/resources/generatorConfig.xml
+!src/main/resources/log4j2.xml
+
