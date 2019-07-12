@@ -2,6 +2,15 @@
 ### Example user template template
 ### Example user template
 
+### Maven template
+target/
+pom.xml
+.mvn/wrapper/maven-wrapper.jar
+mvnw
+HELP.md
+mvnw.cmd
+.mvn
+
 # IntelliJ project files
 .idea
 *.iml
@@ -12,6 +21,7 @@ logs
 
 
 # Custome ignore.
+src/test/*
 src/main/*
 !src/main/java
 !src/main/resources
