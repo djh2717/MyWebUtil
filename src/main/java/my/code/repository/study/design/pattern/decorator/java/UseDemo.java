@@ -5,7 +5,6 @@ package my.code.repository.study.design.pattern.decorator.java;
  * @E-Mail 1544579459@qq.com
  */
 public class UseDemo {
-    
     public static void main(String[] args) {
         ConcreteComponent concreteComponent = new ConcreteComponent();
         BaseDecorate decorateA = new DecorateA(concreteComponent);

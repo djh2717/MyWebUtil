@@ -5,10 +5,8 @@ package my.code.repository.study.design.pattern.bridge.java.additive;
  * @E-Mail 1544579459@qq.com
  */
 public class MilkAdditive extends BaseAdditive {
-
     @Override
     public String toString() {
         return "牛奶";
     }
-    
 }

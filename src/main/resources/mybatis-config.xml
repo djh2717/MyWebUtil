@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE configuration
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8368458fef70cb852b7a8d76092168d2dfceff22
 <configuration>
 
     <settings>
@@ -48,7 +52,15 @@
     <mappers>
         <!--<mybatis.mapper resource="mybatis.mapper/CountryMapper.xml" />-->
         <!--映射包名,从而避免每次增加Mapper.xml文件时都需要在此添加 Mapper-->
+<<<<<<< HEAD
         <!--        <package name="mybatis.mapper" />-->
     </mappers>
 
+=======
+        <!--<package name="javamapper" />-->
+        <!--<package name="mybatis.mapper" />-->
+    </mappers>
+
+
+>>>>>>> 8368458fef70cb852b7a8d76092168d2dfceff22
 </configuration>

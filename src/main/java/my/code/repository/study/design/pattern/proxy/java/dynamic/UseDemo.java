@@ -9,7 +9,6 @@ import java.lang.reflect.Proxy;
 public class UseDemo {
 
     public static void main(String[] args) {
-
         RealImp realImp = new RealImp();
         SubjectInternal subjectInternal = new SubjectInternal(realImp);
 
@@ -18,6 +17,5 @@ public class UseDemo {
                         new Class[]{Subject.class}, subjectInternal);
 
         subject.someMethod();
-
     }
 }

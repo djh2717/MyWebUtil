@@ -10,7 +10,6 @@ package my.code.repository.study.design.pattern.chain.java;
  * @E-Mail 1544579459@qq.com
  */
 public class UseDemo {
-
     public static void main(String[] args) {
 
         ConcreteHandlerA concreteHandlerA = new ConcreteHandlerA();

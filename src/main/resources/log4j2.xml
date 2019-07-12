@@ -33,7 +33,11 @@
             <!--%highlight(%-5level) %d{yyyy-MM-dd'T'HH:mm:ss.SSS} %yellow([%thread]) %blue(%logger{36}\(%class{0}.java:%line\)) %msg%n-->
 
             <!--代码链接配置-->
+<<<<<<< HEAD
             %-5level %d{HH:mm:ss} %logger{0}.\(%class{0}.java:%line\):%M [%thread] :%n%msg%n%n
+=======
+            %-5level %d{HH:mm:ss} %logger{0}.\(%class{0}.java:%line\):%M [%thread] :%n %msg %n%n
+>>>>>>> 8368458fef70cb852b7a8d76092168d2dfceff22
         </property>
 
     </Properties>

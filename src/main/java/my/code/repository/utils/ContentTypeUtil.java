@@ -30,9 +30,8 @@ public class ContentTypeUtil {
      * application/msword         ：Word文档格式
      * application/octet-stream   ：二进制流数据
      */
-
     public static final String APPLICATION_JSON = "application/json";
     public static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
     public static final String TEXT_HTML = "text/html";
-    
+
 }

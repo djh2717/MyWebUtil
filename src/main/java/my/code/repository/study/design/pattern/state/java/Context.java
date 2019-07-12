@@ -5,7 +5,6 @@ package my.code.repository.study.design.pattern.state.java;
  * @E-Mail 1544579459@qq.com
  */
 public class Context {
-
     private State mState;
 
     public void setState(State state) {

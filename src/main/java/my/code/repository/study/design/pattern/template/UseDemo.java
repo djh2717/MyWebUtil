@@ -11,6 +11,5 @@ public class UseDemo {
 
         BaseFry vegetableFry = new VegetableFry();
         vegetableFry.cookProcess();
-
     }
 }

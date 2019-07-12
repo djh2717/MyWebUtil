@@ -3,8 +3,6 @@ package my.code.repository.study.design.pattern.proxy.java.dynamic;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import mybatis.model.SysRolePrivilege;
-
 /**
  * @author djh on  2019/3/18 14:17
  * @E-Mail 1544579459@qq.com

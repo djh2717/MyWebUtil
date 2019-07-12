@@ -20,7 +20,6 @@ package my.code.repository.study.design.pattern.adapter.java;
  * @E-Mail 1544579459@qq.com
  */
 public class UseDemo {
-
     private static class Mobile {
         private void charge(int voltage) {
             if (voltage == 5) {
